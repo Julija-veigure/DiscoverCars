@@ -40,7 +40,6 @@ public class DiscoverCarsTest {
         //searching.search();
 
 
-
         //baseFunctions.closeBrowser();
 
 
