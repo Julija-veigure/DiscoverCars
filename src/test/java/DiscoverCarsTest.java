@@ -35,8 +35,10 @@ public class DiscoverCarsTest {
         searching.search();
         baseFunctions.compare(attributesForAsserting.warningMsg, searching.warningMsg());
         searching.selectPickUpLocation();
-        System.out.println(searching.selectPickUpDate());
+        //System.out.println(searching.selectPickUpDate());
         searching.selectPickUpDate();
+        searching.selectPickUpTime();
+        //searching.selectDropOffDate();
 
         //searching.search();
 

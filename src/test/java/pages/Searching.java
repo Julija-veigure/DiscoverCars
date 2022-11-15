@@ -5,6 +5,10 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.core.Logger;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Searching {
     private final Logger LOGGER = (Logger) LogManager.getLogger(this.getClass());
@@ -16,6 +20,10 @@ public class Searching {
     private final By WARNING_SELECT_LOCATION = By.xpath(".//ul[@class = 'error-list']");
     private final By PICK_UP_DATE = By.xpath(".//input[@id = 'pick-date-ui']");
     private final By PICK_UP_TIME = By.xpath(".//div[@id = 'pick_time_chosen']");
+    private final By PICK_UP_TIME_LIST = By.xpath(".//ul[@class = 'chosen-results']");
+    private final By PICK_UP_NEXT_MONTH = By.xpath(".//a[@class = 'ui-datepicker-next ui-corner-all']");
+    private final By PICK_UP_DATE_LIST = By.xpath(".//a[@class = 'ui-state-default']");
+    private final By DROP_OFF_DATE = By.xpath(".//input[@id = 'drop-date-ui']");
 
 
     public Searching(BaseFunctions baseFunctions) {
@@ -38,11 +46,26 @@ public class Searching {
         pickUpLocation.sendKeys(Keys.ENTER);
     }
 
-    public String selectPickUpDate() { //doen't work, doesn't retur text ?!?!?!
-        String text = baseFunctions.getText(PICK_UP_DATE);
-        System.out.println(text);
-        return text;
+    public void selectPickUpDate() {
+        baseFunctions.click(PICK_UP_DATE);
+        baseFunctions.click(PICK_UP_NEXT_MONTH);
+        List<WebElement> dates = baseFunctions.findElements(PICK_UP_DATE_LIST);
+        dates.get(2).click();
     }
 
+    // ---------> Need rewrite this function.
+    public void selectPickUpTime() {
+        baseFunctions.click(PICK_UP_TIME);
+        List<WebElement> timeBlocks = baseFunctions.findElements(PICK_UP_TIME_LIST);
+        System.out.println(timeBlocks.get(0).getText());
+        System.out.println(timeBlocks.size() + " Time List");
+        timeBlocks.get(0).click();
+    }
+
+    public void selectDropOffDate() {
+        baseFunctions.click(DROP_OFF_DATE);
+        List<WebElement> dates = baseFunctions.findElements(PICK_UP_DATE_LIST);
+        dates.get(10).click();
+    }
 
 }
