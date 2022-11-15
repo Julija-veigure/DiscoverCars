@@ -30,7 +30,8 @@ public class DiscoverCarsTest {
         mainPage.selectLatvianLanguage();
         baseFunctions.compare(attributesForAsserting.titleInLvForLv, mainPage.giveMainPageTitle());
         mainPage.selectEnglishLanguage();
-        //baseFunctions.compare(attributesForAsserting.titleInEnForLv, mainPage.giveMainPageTitle());
+        baseFunctions.compare(attributesForAsserting.titleInEnForLv, mainPage.giveMainPageTitle());
+
         searching.search();
         baseFunctions.compare(attributesForAsserting.warningMsg, searching.warningMsg());
         searching.selectPickUpLocation();

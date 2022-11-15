@@ -38,7 +38,7 @@ public class Searching {
         pickUpLocation.sendKeys(Keys.ENTER);
     }
 
-    public String selectPickUpDate() { //doen't work, doesn't retur tex ?!?!?!
+    public String selectPickUpDate() { //doen't work, doesn't retur text ?!?!?!
         String text = baseFunctions.getText(PICK_UP_DATE);
         System.out.println(text);
         return text;
