@@ -8,6 +8,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -22,11 +23,11 @@ public class BaseFunctions {
 
 
     public BaseFunctions() {
-        WebDriverManager.chromedriver().setup();
+        WebDriverManager.firefoxdriver().setup();
         LOGGER.info("Opening browser window");
-        driver = new ChromeDriver();
+        driver = new FirefoxDriver();
         driver.manage().window().maximize();
-        wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 
     public void openUrl(String url) {
@@ -59,11 +60,11 @@ public class BaseFunctions {
         return driver.findElements(locator);
     }
 
-    public void selectPickUpLocation(By locator, String text) {
+/*    public void selectPickUpLocation(By locator, String text) {
         WebElement inputField = driver.findElement(locator);
         inputField.click();
         inputField.sendKeys(text);
-    }
+    }*/
 
     public void closeBrowser() {
         LOGGER.info("Test done!");

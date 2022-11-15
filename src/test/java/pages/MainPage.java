@@ -15,6 +15,12 @@ public class MainPage {
     private final By LANGUAGES = By.xpath(".//a[@data-link = 'choose-language']");
     private final By LANGUAGE_LATVIAN = By.xpath(".//a[@data-iso-code = 'lv']");
     private final By LANGUAGE_ENGLISH = By.xpath(".//a[@data-iso-code = 'en']");
+    public String title = "Car Rental – Search, Compare, and Save up to 70%!";
+    public String titleInEnForLv = "Car Rental in Latvia";
+    public String titleInLvForLv = "Auto noma Latvijā";
+    public String numberOfCountries = "45";
+    public String unableToFindLocation = "Unable to find any location";
+    public String warningMsg = "Select a pick-up location";
 
     public MainPage(BaseFunctions baseFunctions) {
         this.baseFunctions = baseFunctions;

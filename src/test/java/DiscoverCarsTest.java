@@ -12,7 +12,6 @@ public class DiscoverCarsTest {
         LOGGER.info(" This test will check some functionality");
 
         BaseFunctions baseFunctions = new BaseFunctions();
-        AttributesForAsserting attributesForAsserting = new AttributesForAsserting(baseFunctions);
         MainPage mainPage = new MainPage(baseFunctions);
         Searching searching = new Searching(baseFunctions);
         Login login = new Login(baseFunctions);
@@ -22,19 +21,19 @@ public class DiscoverCarsTest {
 
         mainPage.acceptCookies();
 
-        baseFunctions.compare(attributesForAsserting.title, mainPage.giveMainPageTitle());
+        baseFunctions.compare(mainPage.title, mainPage.giveMainPageTitle());
         mainPage.giveNumbersOfCountries();
-        baseFunctions.compare(attributesForAsserting.numberOfCountries, mainPage.giveNumbersOfCountries());
+        baseFunctions.compare(mainPage.numberOfCountries, mainPage.giveNumbersOfCountries());
 
         mainPage.selectCountryLatvia();
-        baseFunctions.compare(attributesForAsserting.titleInEnForLv, mainPage.giveMainPageTitle());
+        baseFunctions.compare(mainPage.titleInEnForLv, mainPage.giveMainPageTitle());
         mainPage.selectLatvianLanguage();
-        baseFunctions.compare(attributesForAsserting.titleInLvForLv, mainPage.giveMainPageTitle());
+        baseFunctions.compare(mainPage.titleInLvForLv, mainPage.giveMainPageTitle());
         mainPage.selectEnglishLanguage();
-        baseFunctions.compare(attributesForAsserting.titleInEnForLv, mainPage.giveMainPageTitle());
+        baseFunctions.compare(mainPage.titleInEnForLv, mainPage.giveMainPageTitle());
 
         searching.search();
-        baseFunctions.compare(attributesForAsserting.warningMsg, searching.warningMsg());
+        baseFunctions.compare(mainPage.warningMsg, searching.warningMsg());
         searching.selectPickUpLocation();
 
         searching.selectPickUpDate();
@@ -46,6 +45,7 @@ public class DiscoverCarsTest {
         searching.search();
 
         login.clickLoginIcon();
+        login.closePopUp();
 
 
 
