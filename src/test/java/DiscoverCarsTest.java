@@ -43,6 +43,9 @@ public class DiscoverCarsTest {
         searching.selectDropOffTime();
 
         searching.search();
+        baseFunctions.loadingData();
+        searching.checkSpecialOffers();
+
 
         login.clickLoginIcon();
         login.closePopUp();

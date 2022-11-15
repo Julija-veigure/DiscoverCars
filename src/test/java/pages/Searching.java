@@ -23,7 +23,8 @@ public class Searching {
     private final By PICK_UP_DATE_LIST = By.xpath(".//a[@class = 'ui-state-default']");
     private final By DROP_OFF_DATE = By.xpath(".//input[@id = 'drop-date-ui']");
     private final By DROP_OFF_TIME = By.xpath(".//div[@id = 'drop_time_chosen']");
-
+    private final By SPECIAL_OFFERS = By.xpath(".//span[@class = 'category-label trend']");
+    private String SPEC_OFFERS_TEXT = "Special offers";
 
 
     public Searching(BaseFunctions baseFunctions) {
@@ -66,13 +67,22 @@ public class Searching {
     public void selectDropOffDate() {
         baseFunctions.click(DROP_OFF_DATE);
         List<WebElement> dates = baseFunctions.findElements(PICK_UP_DATE_LIST);
-        dates.get(10).click();
+        dates.get(9).click();
     }
 
     public void selectDropOffTime() {
         baseFunctions.click(DROP_OFF_TIME);
         List<WebElement> timeBlocks = baseFunctions.findElements(PICK_UP_TIME_LIST);
         timeBlocks.get(1).click();
+    }
+
+    public boolean checkSpecialOffers() {
+        String spec_offers_title = baseFunctions.getText(SPECIAL_OFFERS);
+        if (spec_offers_title == SPEC_OFFERS_TEXT) {
+            return true;
+        } else {
+            return false; // need change else
+        }
 
     }
 

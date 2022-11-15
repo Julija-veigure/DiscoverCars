@@ -23,11 +23,18 @@ public class BaseFunctions {
 
 
     public BaseFunctions() {
-        WebDriverManager.firefoxdriver().setup();
+        WebDriverManager.chromedriver().setup();
         LOGGER.info("Opening browser window");
-        driver = new FirefoxDriver();
+        driver = new ChromeDriver();
         driver.manage().window().maximize();
-        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+    }
+    public void pleasewait() {
+        wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+    }
+
+    public void loadingData() throws InterruptedException {
+        Thread.sleep(4000);
     }
 
     public void openUrl(String url) {

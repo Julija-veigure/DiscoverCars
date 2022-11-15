@@ -11,7 +11,7 @@ public class MainPage {
     private final By ACCEPT_COOKIES_BTN = By.id("onetrust-accept-btn-handler");
     private final By LIST_OF_LOCATIONS = By.xpath(".//div[@class = 'tl-box']");
     private final By TITLE = By.xpath(".//h1[@class = 'home-h1 display-small']");
-    private final By LATVIA = By.xpath(".//a[@href = 'https://www.discovercars.com/latvia' ]");
+    private final By LATVIA = By.xpath(".//a[@href = 'https://www.discovercars.com/latvia']");
     private final By LANGUAGES = By.xpath(".//a[@data-link = 'choose-language']");
     private final By LANGUAGE_LATVIAN = By.xpath(".//a[@data-iso-code = 'lv']");
     private final By LANGUAGE_ENGLISH = By.xpath(".//a[@data-iso-code = 'en']");
@@ -45,6 +45,7 @@ public class MainPage {
 
     public void selectCountryLatvia() {
         baseFunctions.click(LATVIA);
+        System.out.println("Country Latvia is selected");
         LOGGER.info("Country Latvia is selected");
     }
 
@@ -52,12 +53,14 @@ public class MainPage {
         baseFunctions.click(LANGUAGES);
         baseFunctions.click(LANGUAGE_LATVIAN);
         LOGGER.info("Latvian language is selected");
+        System.out.println("Latvian language is selected");
     }
 
     public void selectEnglishLanguage() {
         baseFunctions.click(LANGUAGES);
         baseFunctions.click(LANGUAGE_ENGLISH);
         LOGGER.info("English language is selected");
+        System.out.println("English language is selected");
     }
 
 
