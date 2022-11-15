@@ -10,7 +10,7 @@ public class Login {
     private BaseFunctions baseFunctions;
 
     private final By LOGIN_ICON = By.xpath(".//a[@data-label = 'Navigation']");
-    private final By CLOSE_CONTIN_WITH_GOOGLE = By.xpath(".//div[@class = \"modal-close\"]");
+    private final By CLOSE_LOGIN_WITH_GOOGLE = By.xpath(".//div[@class = \"modal-close\"]");
 
     public Login(BaseFunctions baseFunctions) {
         this.baseFunctions = baseFunctions;
@@ -21,7 +21,7 @@ public class Login {
     }
 
     public void closePopUp() {
-        baseFunctions.click(CLOSE_CONTIN_WITH_GOOGLE);
+        baseFunctions.click(CLOSE_LOGIN_WITH_GOOGLE);
     }
 
 

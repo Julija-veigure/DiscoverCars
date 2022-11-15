@@ -33,9 +33,9 @@ public class DiscoverCarsTest {
         baseFunctions.compare(mainPage.titleInEnForLv, mainPage.giveMainPageTitle());
 
         searching.search();
-        baseFunctions.compare(mainPage.warningMsg, searching.warningMsg());
-        searching.selectPickUpLocation();
+        baseFunctions.compare(mainPage.warningMsg, searching.giveWarningMsg());
 
+        searching.selectPickUpLocation();
         searching.selectPickUpDate();
         searching.selectPickUpTime();
 
@@ -47,17 +47,8 @@ public class DiscoverCarsTest {
         login.clickLoginIcon();
         login.closePopUp();
 
+        baseFunctions.closeBrowser();
 
-
-        //baseFunctions.closeBrowser();
-
-
-
-
-
-        /*tvNetHomePage.acceptCookies();
-        String homePageTitle = tvNetHomePage.getArticleTextById(2);
-        int commentsHomePage = tvNetHomePage.getCommCount();*/
     }
 }
 

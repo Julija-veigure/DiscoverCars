@@ -34,7 +34,7 @@ public class Searching {
         baseFunctions.click(SEARCH_NOW_BTN);
     }
 
-    public String warningMsg() {
+    public String giveWarningMsg() {
         return baseFunctions.getText(WARNING_SELECT_LOCATION);
     }
 
