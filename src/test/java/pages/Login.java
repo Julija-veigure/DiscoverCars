@@ -9,9 +9,17 @@ public class Login {
 
     private BaseFunctions baseFunctions;
 
+    private final By LOGIN_ICON = By.xpath(".//a[@data-label = 'Navigation']");
+
     public Login(BaseFunctions baseFunctions) {
         this.baseFunctions = baseFunctions;
     }
+
+    public void clickLoginIcon() {
+        baseFunctions.click(LOGIN_ICON);
+    }
+
+
 
 
 

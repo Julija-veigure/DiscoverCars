@@ -1,10 +1,7 @@
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.core.Logger;
 import org.junit.jupiter.api.Test;
-import pages.BaseFunctions;
-import pages.MainPage;
-import pages.AttributesForAsserting;
-import pages.Searching;
+import pages.*;
 
 public class DiscoverCarsTest {
     private final Logger LOGGER = (Logger) LogManager.getLogger(this.getClass());
@@ -18,13 +15,17 @@ public class DiscoverCarsTest {
         AttributesForAsserting attributesForAsserting = new AttributesForAsserting(baseFunctions);
         MainPage mainPage = new MainPage(baseFunctions);
         Searching searching = new Searching(baseFunctions);
+        Login login = new Login(baseFunctions);
 
 
         baseFunctions.openUrl("https://www.discovercars.com/");
+
         mainPage.acceptCookies();
+
         baseFunctions.compare(attributesForAsserting.title, mainPage.giveMainPageTitle());
         mainPage.giveNumbersOfCountries();
         baseFunctions.compare(attributesForAsserting.numberOfCountries, mainPage.giveNumbersOfCountries());
+
         mainPage.selectCountryLatvia();
         baseFunctions.compare(attributesForAsserting.titleInEnForLv, mainPage.giveMainPageTitle());
         mainPage.selectLatvianLanguage();
@@ -35,12 +36,17 @@ public class DiscoverCarsTest {
         searching.search();
         baseFunctions.compare(attributesForAsserting.warningMsg, searching.warningMsg());
         searching.selectPickUpLocation();
-        //System.out.println(searching.selectPickUpDate());
+
         searching.selectPickUpDate();
         searching.selectPickUpTime();
-        //searching.selectDropOffDate();
 
-        //searching.search();
+        searching.selectDropOffDate();
+        searching.selectDropOffTime();
+
+        searching.search();
+
+        login.clickLoginIcon();
+
 
 
         //baseFunctions.closeBrowser();

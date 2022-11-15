@@ -5,9 +5,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.core.Logger;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.Select;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Searching {
@@ -24,6 +22,7 @@ public class Searching {
     private final By PICK_UP_NEXT_MONTH = By.xpath(".//a[@class = 'ui-datepicker-next ui-corner-all']");
     private final By PICK_UP_DATE_LIST = By.xpath(".//a[@class = 'ui-state-default']");
     private final By DROP_OFF_DATE = By.xpath(".//input[@id = 'drop-date-ui']");
+    private final By DROP_OFF_TIME = By.xpath(".//div[@id = 'drop_time_chosen']");
 
 
     public Searching(BaseFunctions baseFunctions) {
@@ -57,9 +56,10 @@ public class Searching {
     public void selectPickUpTime() {
         baseFunctions.click(PICK_UP_TIME);
         List<WebElement> timeBlocks = baseFunctions.findElements(PICK_UP_TIME_LIST);
-        System.out.println(timeBlocks.get(0).getText());
-        System.out.println(timeBlocks.size() + " Time List");
         timeBlocks.get(0).click();
+        //System.out.println(timeBlocks.get(0).getText());
+        //System.out.println(timeBlocks.size() + " Time List");
+
     }
 
     public void selectDropOffDate() {
@@ -68,4 +68,10 @@ public class Searching {
         dates.get(10).click();
     }
 
+    public void selectDropOffTime() {
+        baseFunctions.click(DROP_OFF_TIME);
+        List<WebElement> timeBlocks = baseFunctions.findElements(PICK_UP_TIME_LIST);
+        timeBlocks.get(1).click();
+
+    }
 }
