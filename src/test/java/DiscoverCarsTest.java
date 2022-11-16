@@ -24,7 +24,7 @@ public class DiscoverCarsTest {
         baseFunctions.pleaseAssert(mainPage.TITLE_TEXT, mainPage.giveMainPageTitle());
 
         mainPage.giveNumbersOfCountries(); // Logging print out 2 times results - why?
-        baseFunctions.pleaseAssert(mainPage.numberOfCountries, mainPage.giveNumbersOfCountries());
+        baseFunctions.pleaseAssert(mainPage.NUMBER_OF_COUNTRIES, mainPage.giveNumbersOfCountries());
 
         mainPage.selectCountryLatvia(); //not always select Latvia - need to investigate!
         baseFunctions.comparePageTitle(mainPage.titleInEnForLv, mainPage.giveMainPageTitle());

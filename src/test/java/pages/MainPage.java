@@ -18,7 +18,7 @@ public class MainPage {
     public String TITLE_TEXT = "Car Rental – Search, Compare, and Save up to 70%!";
     public String titleInEnForLv = "Car Rental in Latvia";
     public String titleInLvForLv = "Auto noma Latvijā";
-    public String numberOfCountries = "45";
+    public String NUMBER_OF_COUNTRIES = "45";
 
 
 
