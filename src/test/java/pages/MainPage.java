@@ -1,7 +1,7 @@
 package pages;
 
 import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.core.Logger;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 
 public class MainPage {
@@ -38,14 +38,13 @@ public class MainPage {
     }
 
     public String giveNumbersOfCountries() {
+        LOGGER.info("A total of available countries in the web: " + baseFunctions.findElements(LIST_OF_LOCATIONS).size());
         int numbersOf = baseFunctions.findElements(LIST_OF_LOCATIONS).size();
-        String number = String.valueOf(numbersOf);
-        return number;
+        return String.valueOf(numbersOf);
     }
 
     public void selectCountryLatvia() {
         baseFunctions.click(LATVIA);
-        System.out.println("Country Latvia is selected");
         LOGGER.info("Country Latvia is selected");
     }
 
@@ -53,14 +52,12 @@ public class MainPage {
         baseFunctions.click(LANGUAGES);
         baseFunctions.click(LANGUAGE_LATVIAN);
         LOGGER.info("Latvian language is selected");
-        System.out.println("Latvian language is selected");
     }
 
     public void selectEnglishLanguage() {
         baseFunctions.click(LANGUAGES);
         baseFunctions.click(LANGUAGE_ENGLISH);
         LOGGER.info("English language is selected");
-        System.out.println("English language is selected");
     }
 
 

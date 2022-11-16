@@ -1,14 +1,14 @@
 package pages;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+
 import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.core.Logger;
+import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -29,12 +29,13 @@ public class BaseFunctions {
         driver.manage().window().maximize();
         wait = new WebDriverWait(driver, Duration.ofSeconds(5));
     }
+
     public void pleasewait() {
-        wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 
     public void loadingData() throws InterruptedException {
-        Thread.sleep(4000);
+        Thread.sleep(6000);
     }
 
     public void openUrl(String url) {
@@ -43,35 +44,31 @@ public class BaseFunctions {
     }
 
     public void click(By locator) {
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.elementToBeClickable(locator));
         driver.findElement(locator).click();
+        //LOGGER.info("Click on " + locator);
     }
-    // need to transfer function acceptCookies to MainPage
 
     public String getText(By locator) {
-
+        //LOGGER.info("Getting text from " + locator );
         return driver.findElement(locator).getText();
     }
 
     public void compare(String expectedText, String textFromWeb) {
-        LOGGER.info("Assertion " + expectedText);
-        Assertions.assertEquals(expectedText, textFromWeb, "Asserting fail");
+        LOGGER.info("Assertion - " + "Expected: " + expectedText + " & Actual: " +  textFromWeb);
+        Assertions.assertEquals(expectedText, textFromWeb, "Asserting is failed");
     }
 
     public WebElement findElement(By locator) {
+        //LOGGER.info("Getting element by " + locator);
         return driver.findElement(locator);
     }
 
     public List<WebElement> findElements(By locator) {
-        LOGGER.info("Getting all elements by " + locator);
+        //LOGGER.info("Getting all elements by " + locator);
         return driver.findElements(locator);
     }
-
-/*    public void selectPickUpLocation(By locator, String text) {
-        WebElement inputField = driver.findElement(locator);
-        inputField.click();
-        inputField.sendKeys(text);
-    }*/
 
     public void closeBrowser() {
         LOGGER.info("Test done!");

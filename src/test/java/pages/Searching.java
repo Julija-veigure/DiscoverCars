@@ -2,11 +2,12 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.core.Logger;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 
 import java.util.List;
+import java.util.Objects;
 
 public class Searching {
     private final Logger LOGGER = (Logger) LogManager.getLogger(this.getClass());
@@ -33,18 +34,22 @@ public class Searching {
 
     public void search() {
         baseFunctions.click(SEARCH_NOW_BTN);
+        LOGGER.info("Search now btn ...");
     }
 
     public String giveWarningMsg() {
+        LOGGER.info("Search without location, checking for warning message");
         return baseFunctions.getText(WARNING_SELECT_LOCATION);
     }
 
     public void selectPickUpLocation() throws InterruptedException {
         WebElement pickUpLocation = baseFunctions.findElement(PICKUP_LOCATION);
         pickUpLocation.sendKeys("Rīga");
-        Thread.sleep(2000); //NEED TO CHANGE!!!!
+        Thread.sleep(4000);
+        // TUT MNE NADO PODOZDATJ POKA PODRUZITSJA POMOGI POZALUJSTA, KAK PRAVELNO OZIDANIJE PROPISATJ?
         pickUpLocation.sendKeys(Keys.ARROW_DOWN);
         pickUpLocation.sendKeys(Keys.ENTER);
+        LOGGER.info("Pick up location is selected");
     }
 
     public void selectPickUpDate() {
@@ -52,36 +57,35 @@ public class Searching {
         baseFunctions.click(PICK_UP_NEXT_MONTH);
         List<WebElement> dates = baseFunctions.findElements(PICK_UP_DATE_LIST);
         dates.get(2).click();
+        LOGGER.info("Pick up date is selected");
     }
 
-    // ---------> Need rewrite this function.
-    public void selectPickUpTime() {
+
+    public void selectPickUpTime() { // ---------> Need update this function.
         baseFunctions.click(PICK_UP_TIME);
         List<WebElement> timeBlocks = baseFunctions.findElements(PICK_UP_TIME_LIST);
         timeBlocks.get(0).click();
-        //System.out.println(timeBlocks.get(0).getText());
-        //System.out.println(timeBlocks.size() + " Time List");
-
+        LOGGER.info("Pick up time is selected");
     }
 
     public void selectDropOffDate() {
         baseFunctions.click(DROP_OFF_DATE);
         List<WebElement> dates = baseFunctions.findElements(PICK_UP_DATE_LIST);
         dates.get(9).click();
+        LOGGER.info("Drop off date is selected");
     }
 
     public void selectDropOffTime() {
         baseFunctions.click(DROP_OFF_TIME);
         List<WebElement> timeBlocks = baseFunctions.findElements(PICK_UP_TIME_LIST);
         timeBlocks.get(1).click();
+        LOGGER.info("Drop off time is selected");
     }
 
-    public boolean checkSpecialOffers() {
+    public void checkSpecialOffers() {
         String spec_offers_title = baseFunctions.getText(SPECIAL_OFFERS);
-        if (spec_offers_title == SPEC_OFFERS_TEXT) {
-            return true;
-        } else {
-            return false; // need change else
+        if (Objects.equals(spec_offers_title, SPEC_OFFERS_TEXT)) {
+            LOGGER.info("Special offers is available");
         }
 
     }

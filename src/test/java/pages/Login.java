@@ -1,11 +1,11 @@
 package pages;
 
 import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.core.Logger;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 
 public class Login {
-    //public void Logger LOGGER = LogManager.getLogger(this.getClass());
+    private final Logger LOGGER = (Logger) LogManager.getLogger(this.getClass());
 
     private BaseFunctions baseFunctions;
 
@@ -18,10 +18,12 @@ public class Login {
 
     public void clickLoginIcon() {
         baseFunctions.click(LOGIN_ICON);
+        LOGGER.info("Click on Login btn");
     }
 
     public void closePopUp() {
         baseFunctions.click(CLOSE_LOGIN_WITH_GOOGLE);
+        LOGGER.info("Close popup, we don't want to log in by google account");
     }
 
 

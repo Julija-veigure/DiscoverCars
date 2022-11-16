@@ -25,7 +25,7 @@ public class DiscoverCarsTest {
         mainPage.giveNumbersOfCountries();
         baseFunctions.compare(mainPage.numberOfCountries, mainPage.giveNumbersOfCountries());
 
-        mainPage.selectCountryLatvia();
+        mainPage.selectCountryLatvia(); //not always select Latvia - why?
         baseFunctions.compare(mainPage.titleInEnForLv, mainPage.giveMainPageTitle());
         mainPage.selectLatvianLanguage();
         baseFunctions.compare(mainPage.titleInLvForLv, mainPage.giveMainPageTitle());
