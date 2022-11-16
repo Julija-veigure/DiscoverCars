@@ -17,37 +17,44 @@ public class DiscoverCarsTest {
         Login login = new Login(baseFunctions);
         SearchingResultPage searchingResultPage = new SearchingResultPage(baseFunctions);
 
-
         baseFunctions.openUrl("https://www.discovercars.com/");
 
         mainPage.acceptCookies();
 
-        baseFunctions.compare(mainPage.title, mainPage.giveMainPageTitle());
+        baseFunctions.pleaseAssert(mainPage.TITLE_TEXT, mainPage.giveMainPageTitle());
 
         mainPage.giveNumbersOfCountries(); // Logging print out 2 times results - why?
-        baseFunctions.compare(mainPage.numberOfCountries, mainPage.giveNumbersOfCountries());
+        baseFunctions.pleaseAssert(mainPage.numberOfCountries, mainPage.giveNumbersOfCountries());
 
-        mainPage.selectCountryLatvia(); //not always select Latvia - why?
-        baseFunctions.compare(mainPage.titleInEnForLv, mainPage.giveMainPageTitle());
+        mainPage.selectCountryLatvia(); //not always select Latvia - need to investigate!
+        baseFunctions.comparePageTitle(mainPage.titleInEnForLv, mainPage.giveMainPageTitle());
 
         mainPage.selectLatvianLanguage();
-        baseFunctions.compare(mainPage.titleInLvForLv, mainPage.giveMainPageTitle());
+        baseFunctions.comparePageTitle(mainPage.titleInLvForLv, mainPage.giveMainPageTitle());
 
         mainPage.selectEnglishLanguage();
-        baseFunctions.compare(mainPage.titleInEnForLv, mainPage.giveMainPageTitle());
+        baseFunctions.comparePageTitle(mainPage.titleInEnForLv, mainPage.giveMainPageTitle());
 
         searching.search();
-        baseFunctions.compare(mainPage.warningMsg, searching.giveWarningMsg());
+        baseFunctions.pleaseAssert(searching.WARNING_MSG_PICK_UP, searching.giveWarningMsg());
 
         searching.selectPickUpLocation();
         searching.selectPickUpDate();
         searching.selectPickUpTime();
 
+        searching.tickCheckBox();
+
+        searching.search();
+        baseFunctions.pleaseAssert(searching.WARNING_MSG_DROP_OFF, searching.giveWarningMsg());
+
+        //searching.selectDropOffLocation(); //
+        searching.tickCheckBox();
+
         searching.selectDropOffDate();
         searching.selectDropOffTime();
 
         searching.search();
-        baseFunctions.loadingData();
+        searching.loadingAllResults();
         searching.checkSpecialOffers();
 
 

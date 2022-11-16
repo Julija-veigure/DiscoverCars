@@ -14,6 +14,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 import java.util.List;
+import java.util.Objects;
 
 public class BaseFunctions {
 
@@ -27,15 +28,17 @@ public class BaseFunctions {
         LOGGER.info("Opening browser window");
         driver = new ChromeDriver();
         driver.manage().window().maximize();
-        wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-    }
-
-    public void pleasewait() {
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 
-    public void loadingData() throws InterruptedException {
-        Thread.sleep(6000);
+    public void pleaseWaitElement(By locator) {
+        wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        wait.until(ExpectedConditions.elementToBeClickable(locator));
+    }
+
+    public void pleaseWaitElements(WebElement element) {
+        wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        wait.until(ExpectedConditions.elementToBeClickable(element));
     }
 
     public void openUrl(String url) {
@@ -55,9 +58,18 @@ public class BaseFunctions {
         return driver.findElement(locator).getText();
     }
 
-    public void compare(String expectedText, String textFromWeb) {
-        LOGGER.info("Assertion - " + "Expected: " + expectedText + " & Actual: " +  textFromWeb);
+    public void pleaseAssert(String expectedText, String textFromWeb) {
+        LOGGER.info("Assertion - " + "Expected: " + expectedText + " & Actual: " + textFromWeb);
         Assertions.assertEquals(expectedText, textFromWeb, "Asserting is failed");
+    }
+
+    public void comparePageTitle(String expectedText, String textFromWeb) {
+        if (Objects.equals(expectedText, textFromWeb)) {
+            LOGGER.info("The assertion passed - " + "Expected: " + expectedText + " & Actual: " + textFromWeb);
+        }
+        else { LOGGER.info("! ! ! THE ASSERTION FAILED - " + "Expected: " + expectedText + " & Actual: " + textFromWeb);
+        }
+
     }
 
     public WebElement findElement(By locator) {
@@ -74,6 +86,5 @@ public class BaseFunctions {
         LOGGER.info("Test done!");
         driver.quit();
     }
-
 
 }
