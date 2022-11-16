@@ -15,6 +15,7 @@ public class DiscoverCarsTest {
         MainPage mainPage = new MainPage(baseFunctions);
         Searching searching = new Searching(baseFunctions);
         Login login = new Login(baseFunctions);
+        SearchingResultPage searchingResultPage = new SearchingResultPage(baseFunctions);
 
 
         baseFunctions.openUrl("https://www.discovercars.com/");
@@ -22,13 +23,16 @@ public class DiscoverCarsTest {
         mainPage.acceptCookies();
 
         baseFunctions.compare(mainPage.title, mainPage.giveMainPageTitle());
-        mainPage.giveNumbersOfCountries();
+
+        mainPage.giveNumbersOfCountries(); // Logging print out 2 times results - why?
         baseFunctions.compare(mainPage.numberOfCountries, mainPage.giveNumbersOfCountries());
 
         mainPage.selectCountryLatvia(); //not always select Latvia - why?
         baseFunctions.compare(mainPage.titleInEnForLv, mainPage.giveMainPageTitle());
+
         mainPage.selectLatvianLanguage();
         baseFunctions.compare(mainPage.titleInLvForLv, mainPage.giveMainPageTitle());
+
         mainPage.selectEnglishLanguage();
         baseFunctions.compare(mainPage.titleInEnForLv, mainPage.giveMainPageTitle());
 
