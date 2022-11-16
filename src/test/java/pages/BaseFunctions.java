@@ -32,12 +32,12 @@ public class BaseFunctions {
     }
 
     public void pleaseWaitElement(By locator) {
-        wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.elementToBeClickable(locator));
     }
 
     public void pleaseWaitElements(WebElement element) {
-        wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.elementToBeClickable(element));
     }
 
@@ -47,7 +47,7 @@ public class BaseFunctions {
     }
 
     public void click(By locator) {
-        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         wait.until(ExpectedConditions.elementToBeClickable(locator));
         driver.findElement(locator).click();
         //LOGGER.info("Click on " + locator);
@@ -66,10 +66,9 @@ public class BaseFunctions {
     public void comparePageTitle(String expectedText, String textFromWeb) {
         if (Objects.equals(expectedText, textFromWeb)) {
             LOGGER.info("The assertion passed - " + "Expected: " + expectedText + " & Actual: " + textFromWeb);
+        } else {
+            LOGGER.info("! ! ! THE ASSERTION FAILED - " + "Expected: " + expectedText + " & Actual: " + textFromWeb);
         }
-        else { LOGGER.info("! ! ! THE ASSERTION FAILED - " + "Expected: " + expectedText + " & Actual: " + textFromWeb);
-        }
-
     }
 
     public WebElement findElement(By locator) {
@@ -82,9 +81,21 @@ public class BaseFunctions {
         return driver.findElements(locator);
     }
 
+    public void typeIn(By locator, String text) {
+        WebElement field = driver.findElement(locator);
+        field.clear();
+        field.sendKeys(text);
+    }
+
     public void closeBrowser() {
         LOGGER.info("Test done!");
         driver.quit();
     }
+
+    public void refreshPage() {
+        LOGGER.info("Refreshing the page");
+        driver.navigate().refresh();
+    }
+
 
 }

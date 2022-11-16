@@ -15,7 +15,7 @@ public class DiscoverCarsTest {
         MainPage mainPage = new MainPage(baseFunctions);
         Searching searching = new Searching(baseFunctions);
         Login login = new Login(baseFunctions);
-        SearchingResultPage searchingResultPage = new SearchingResultPage(baseFunctions);
+        ResultPage resultPage = new ResultPage(baseFunctions);
 
         baseFunctions.openUrl("https://www.discovercars.com/");
 
@@ -57,11 +57,19 @@ public class DiscoverCarsTest {
         searching.loadingAllResults();
         searching.checkSpecialOffers();
 
+        resultPage.changeSearchRequest();
+        resultPage.deletePickUpLocation();
 
+        login.clickOnLogo();
         login.clickLoginIcon();
         login.closePopUp();
+        login.clickLoginIcon();
+        login.continueWithGoogle();
+        login.typeInEmail();
+        login.typeInPassword();
+        baseFunctions.pleaseAssert(login.NAME, login.giveAuthorizerName());
 
-        baseFunctions.closeBrowser();
+        //baseFunctions.closeBrowser();
 
     }
 }
