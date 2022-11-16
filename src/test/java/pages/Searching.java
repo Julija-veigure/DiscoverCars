@@ -70,7 +70,8 @@ public class Searching {
 
     public void selectDropOffLocation() { // Need help, Xpath in PickUp and in DropOff is the same
         WebElement dropOffLocation = baseFunctions.findElement(DROP_OFF_LOCATION);
-        dropOffLocation.sendKeys("Rig");
+        //dropOffLocation.sendKeys("Rig");
+        baseFunctions.typeIn(DROP_OFF_LOCATION, "Rīg");
         WebElement dropOffLocationWait = baseFunctions.findElement(DROP_OFF_LOCATION).findElement(DROP_OFF_LOCATION_LIST);
         baseFunctions.pleaseWaitElements(dropOffLocationWait);
         dropOffLocation.sendKeys(Keys.ARROW_DOWN);
@@ -87,7 +88,7 @@ public class Searching {
     }
 
 
-    public void selectPickUpTime() { // ---------> Need update this function.
+    public void selectPickUpTime() { // ---------> Need to update this function.
         baseFunctions.click(PICK_UP_TIME);
         List<WebElement> timeBlocks = baseFunctions.findElements(PICK_UP_TIME_LIST);
         timeBlocks.get(0).click();
@@ -110,9 +111,11 @@ public class Searching {
 
     public void checkSpecialOffers() {
         String spec_offers_title = baseFunctions.getText(SPECIAL_OFFERS);
-        String SPEC_OFFERS_TEXT = "Special offersss";
+        String SPEC_OFFERS_TEXT = "Special offers";
         if (Objects.equals(spec_offers_title, SPEC_OFFERS_TEXT)) {
-            LOGGER.info("Special offers is available");
+            LOGGER.info("Special offers are available");
+        } else {
+            LOGGER.info("! ! ! Special offers are not available");
         }
 
     }
