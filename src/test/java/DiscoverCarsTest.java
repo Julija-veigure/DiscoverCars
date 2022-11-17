@@ -8,7 +8,7 @@ public class DiscoverCarsTest {
 
     @Test
 
-    public void Testing() throws InterruptedException {
+    public void Testing() {
         LOGGER.info(" This test will check some functionality in <Discover cars> page");
 
         BaseFunctions baseFunctions = new BaseFunctions();
