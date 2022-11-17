@@ -52,12 +52,14 @@ public class Login {
         baseFunctions.findElements(NEXT).get(1).click();
         LOGGER.info("Email - discover.cars.for.tests@gmail.com  is accepted");
     }
+
     public void typeInPassword() {
         baseFunctions.click(PASSWORD);
         baseFunctions.typeIn(PASSWORD, PASSWORD_TEXT);
         baseFunctions.findElements(NEXT).get(1).click();
         LOGGER.info("Password - *** - accepted");
     }
+
     public String giveAuthorizerName() {
         baseFunctions.pleaseWaitElement(ACCOUNT_NAME);
         LOGGER.info("Congratulation, you are authorized");

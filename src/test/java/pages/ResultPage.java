@@ -9,7 +9,7 @@ public class ResultPage {
     private final BaseFunctions baseFunctions;
 
     private final By CHANGE_SRC_BTN = By.xpath(".//a[@class = 'change-search trigger-gtm-change-search']");
-    private final By CLEAR_PICK_UP_LOCATION =By.xpath(".//a[@class= 'clear-auto-complete']");
+    private final By CLEAR_PICK_UP_LOCATION = By.xpath(".//a[@class= 'clear-auto-complete']");
 
 
     public ResultPage(BaseFunctions baseFunctions) {
@@ -23,11 +23,6 @@ public class ResultPage {
     public void deletePickUpLocation() {
         baseFunctions.click(CLEAR_PICK_UP_LOCATION);
     }
-
-
-
-
-
 
 
 }

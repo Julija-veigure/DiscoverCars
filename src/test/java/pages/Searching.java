@@ -27,14 +27,13 @@ public class Searching {
     private final By PICK_UP_DATE_LIST = By.xpath(".//a[@class = 'ui-state-default']");
     private final By LOCATION_CHECK_BOX = By.xpath(".//label[@for = 'is-drop-off']");
     public String WARNING_MSG_DROP_OFF = "Select a drop-off location";
-        private final By DROP_OFF_LOCATION = By.xpath(".//input[@id= 'drop-off-location']");
+    private final By DROP_OFF_LOCATION = By.xpath(".//input[@id= 'drop-off-location']");
     private final By DROP_OFF_LOCATION_LIST = By.xpath(".//div[@class= 'location-item airport tt-suggestion tt-selectable']");
     private final By DROP_OFF_DATE = By.xpath(".//input[@id = 'drop-date-ui']");
     private final By DROP_OFF_TIME = By.xpath(".//div[@id = 'drop_time_chosen']");
     private final By SPECIAL_OFFERS = By.xpath(".//span[@class = 'category-label trend']");
 
     public String UNABLE_TO_FIND_ANY_LOCATION = "Unable to find any location";
-
 
 
     public Searching(BaseFunctions baseFunctions) {
@@ -55,6 +54,7 @@ public class Searching {
         LOGGER.info("Search without location, checking for warning message");
         return baseFunctions.getText(WARN_MSG);
     }
+
     public void selectPickUpLocation() {
         WebElement pickUpLocation = baseFunctions.findElement(PICK_UP_LOCATION);
         pickUpLocation.sendKeys("Rīga");
@@ -75,7 +75,8 @@ public class Searching {
         WebElement dropOffLocationWait = baseFunctions.findElement(DROP_OFF_LOCATION).findElement(DROP_OFF_LOCATION_LIST);
         baseFunctions.pleaseWaitElements(dropOffLocationWait);
         dropOffLocation.sendKeys(Keys.ARROW_DOWN);
-        dropOffLocation.sendKeys(Keys.ENTER);;
+        dropOffLocation.sendKeys(Keys.ENTER);
+        ;
         LOGGER.info("Drop off location is selected");
     }
 

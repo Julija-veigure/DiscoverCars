@@ -21,7 +21,6 @@ public class MainPage {
     public String NUMBER_OF_COUNTRIES = "45";
 
 
-
     public MainPage(BaseFunctions baseFunctions) {
         this.baseFunctions = baseFunctions;
     }
