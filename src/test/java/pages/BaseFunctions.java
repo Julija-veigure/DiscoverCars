@@ -32,7 +32,7 @@ public class BaseFunctions {
     }
 
     public void pleaseWaitElement(By locator) {
-        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(15));
         wait.until(ExpectedConditions.elementToBeClickable(locator));
     }
 

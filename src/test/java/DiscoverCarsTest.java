@@ -69,7 +69,7 @@ public class DiscoverCarsTest {
         login.typeInPassword();
         baseFunctions.pleaseAssert(login.NAME, login.giveAuthorizerName());
 
-        //baseFunctions.closeBrowser();
+        baseFunctions.closeBrowser();
 
     }
 }

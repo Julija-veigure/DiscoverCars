@@ -61,7 +61,6 @@ public class Login {
     public String giveAuthorizerName() {
         baseFunctions.pleaseWaitElement(ACCOUNT_NAME);
         LOGGER.info("Congratulation, you are authorized");
-        System.out.println(baseFunctions.getText(ACCOUNT_NAME));
         return baseFunctions.getText(ACCOUNT_NAME);
 
     }
