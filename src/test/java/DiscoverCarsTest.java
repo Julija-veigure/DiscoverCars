@@ -9,13 +9,14 @@ public class DiscoverCarsTest {
     @Test
 
     public void Testing() throws InterruptedException {
-        LOGGER.info(" This test will check some functionality");
+        LOGGER.info(" This test will check some functionality in <Discover cars> page");
 
         BaseFunctions baseFunctions = new BaseFunctions();
         MainPage mainPage = new MainPage(baseFunctions);
+        ResultPage resultPage = new ResultPage(baseFunctions);
         Searching searching = new Searching(baseFunctions);
         Login login = new Login(baseFunctions);
-        ResultPage resultPage = new ResultPage(baseFunctions);
+
 
         baseFunctions.openUrl("https://www.discovercars.com/");
 
@@ -23,7 +24,7 @@ public class DiscoverCarsTest {
 
         baseFunctions.pleaseAssert(mainPage.TITLE_TEXT, mainPage.giveMainPageTitle());
 
-        mainPage.giveNumbersOfCountries(); // Logging print out 2 times results - why?
+        mainPage.giveNumbersOfCountries(); // Logging print out 2 times result - why?
         baseFunctions.pleaseAssert(mainPage.NUMBER_OF_COUNTRIES, mainPage.giveNumbersOfCountries());
 
         mainPage.selectCountryLatvia(); //not always select Latvia - need to investigate!
@@ -55,8 +56,8 @@ public class DiscoverCarsTest {
 
         searching.search();
         searching.loadingAllResults();
-        searching.checkSpecialOffers();
 
+        resultPage.checkSpecialOffers();
         resultPage.changeSearchRequest();
         resultPage.deletePickUpLocation();
 

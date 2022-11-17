@@ -11,10 +11,11 @@ import java.util.Objects;
 
 public class Searching {
     private final Logger LOGGER = (Logger) LogManager.getLogger(this.getClass());
-    private BaseFunctions baseFunctions;
+    private final BaseFunctions baseFunctions;
 
 
     private final By UNABLE_TO_FIND_LOCATION = By.xpath(".//div[@class = 'not-found-message hide']");
+    public String UNABLE_TO_FIND_ANY_LOCATION = "Unable to find any location";
     private final By SEARCH_NOW_BTN = By.xpath(".//button[@id = 'location-submit']");
     private final By WARN_MSG = By.xpath(".//ul[@class = 'error-list']");
     public String WARNING_MSG_PICK_UP = "Select a pick-up location";
@@ -31,9 +32,7 @@ public class Searching {
     private final By DROP_OFF_LOCATION_LIST = By.xpath(".//div[@class= 'location-item airport tt-suggestion tt-selectable']");
     private final By DROP_OFF_DATE = By.xpath(".//input[@id = 'drop-date-ui']");
     private final By DROP_OFF_TIME = By.xpath(".//div[@id = 'drop_time_chosen']");
-    private final By SPECIAL_OFFERS = By.xpath(".//span[@class = 'category-label trend']");
-
-    public String UNABLE_TO_FIND_ANY_LOCATION = "Unable to find any location";
+    public final By SPECIAL_OFFERS = By.xpath(".//span[@class = 'category-label trend']");
 
 
     public Searching(BaseFunctions baseFunctions) {
@@ -108,17 +107,6 @@ public class Searching {
         List<WebElement> timeBlocks = baseFunctions.findElements(PICK_UP_TIME_LIST);
         timeBlocks.get(1).click();
         LOGGER.info("Drop off time is selected");
-    }
-
-    public void checkSpecialOffers() {
-        String spec_offers_title = baseFunctions.getText(SPECIAL_OFFERS);
-        String SPEC_OFFERS_TEXT = "Special offers";
-        if (Objects.equals(spec_offers_title, SPEC_OFFERS_TEXT)) {
-            LOGGER.info("Special offers are available");
-        } else {
-            LOGGER.info("! ! ! Special offers are not available");
-        }
-
     }
 
 
