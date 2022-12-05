@@ -31,6 +31,11 @@ public class BaseFunctions {
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 
+    public void openUrl(String url) {
+        LOGGER.info("Opening " + url + " web page");
+        driver.get(url);
+    }
+
     public void pleaseWaitElement(By locator) {
         wait = new WebDriverWait(driver, Duration.ofSeconds(15));
         wait.until(ExpectedConditions.elementToBeClickable(locator));
@@ -39,11 +44,6 @@ public class BaseFunctions {
     public void pleaseWaitElements(WebElement element) {
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.elementToBeClickable(element));
-    }
-
-    public void openUrl(String url) {
-        LOGGER.info("Opening " + url + " web page");
-        driver.get(url);
     }
 
     public void click(By locator) {

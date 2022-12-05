@@ -1,26 +1,31 @@
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.core.Logger;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import pages.*;
 
 public class DiscoverCarsTest {
     private final Logger LOGGER = (Logger) LogManager.getLogger(this.getClass());
 
-    @Test
+    BaseFunctions baseFunctions = new BaseFunctions();
+    MainPage mainPage = new MainPage(baseFunctions);
+    ResultPage resultPage = new ResultPage(baseFunctions);
+    Searching searching = new Searching(baseFunctions);
+    Login login = new Login(baseFunctions);
 
-    public void Testing() {
-        LOGGER.info(" This test will check some functionality in <Discover cars> page");
+    @BeforeEach
 
-        BaseFunctions baseFunctions = new BaseFunctions();
-        MainPage mainPage = new MainPage(baseFunctions);
-        ResultPage resultPage = new ResultPage(baseFunctions);
-        Searching searching = new Searching(baseFunctions);
-        Login login = new Login(baseFunctions);
-
-
+    public void openPage() {
         baseFunctions.openUrl("https://www.discovercars.com/");
 
         mainPage.acceptCookies();
+    }
+
+    @Test
+
+    public void searching() {
+        LOGGER.info(" This test will check searching functionality");
 
         baseFunctions.pleaseAssert(mainPage.TITLE_TEXT, mainPage.giveMainPageTitle());
 
@@ -60,7 +65,11 @@ public class DiscoverCarsTest {
         resultPage.checkSpecialOffers();
         resultPage.changeSearchRequest();
         resultPage.deletePickUpLocation();
+    }
 
+    @Test
+    public void logIn() {
+        LOGGER.info(" This test will check login functionality");
         login.clickOnLogo();
         login.clickLoginIcon();
         login.closePopUp();
@@ -70,8 +79,13 @@ public class DiscoverCarsTest {
         login.typeInPassword();
         baseFunctions.pleaseAssert(login.NAME, login.giveAuthorizerName());
 
-        baseFunctions.closeBrowser();
-
     }
+
+    @AfterEach
+    public void closeBrowser() {
+        baseFunctions.closeBrowser();
+    }
+
 }
+
 
