@@ -25,7 +25,7 @@ public class DiscoverCarsTest {
     @Test
 
     public void searching() {
-        LOGGER.info(" This test will check searching functionality");
+        LOGGER.info("TEST Nr 1: This test will check searching functionality");
 
         baseFunctions.pleaseAssert(mainPage.TITLE_TEXT, mainPage.giveMainPageTitle());
 
@@ -69,7 +69,7 @@ public class DiscoverCarsTest {
 
     @Test
     public void logIn() {
-        LOGGER.info(" This test will check login functionality");
+        LOGGER.info("TEST Nr 2: This test will check login functionality");
         login.clickOnLogo();
         login.clickLoginIcon();
         login.closePopUp();
@@ -79,6 +79,13 @@ public class DiscoverCarsTest {
         login.typeInPassword();
         baseFunctions.pleaseAssert(login.NAME, login.giveAuthorizerName());
 
+    }
+
+    @Test
+    public void loginSearching() {
+        LOGGER.info("TEST Nr 3: A logged in person is looking for transport");
+        logIn();
+        searching();
     }
 
     @AfterEach

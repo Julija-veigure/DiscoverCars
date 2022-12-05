@@ -5,6 +5,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 
 import java.util.List;
 import java.util.Objects;
@@ -71,11 +72,12 @@ public class Searching {
         WebElement dropOffLocation = baseFunctions.findElement(DROP_OFF_LOCATION);
         //dropOffLocation.sendKeys("Rig");
         baseFunctions.typeIn(DROP_OFF_LOCATION, "Rīg");
+       // baseFunctions.selectDropdown(DROP_OFF_LOCATION, "a Downtown");
+/*
         WebElement dropOffLocationWait = baseFunctions.findElement(DROP_OFF_LOCATION).findElement(DROP_OFF_LOCATION_LIST);
         baseFunctions.pleaseWaitElements(dropOffLocationWait);
         dropOffLocation.sendKeys(Keys.ARROW_DOWN);
-        dropOffLocation.sendKeys(Keys.ENTER);
-        ;
+        dropOffLocation.sendKeys(Keys.ENTER);*/
         LOGGER.info("Drop off location is selected");
     }
 

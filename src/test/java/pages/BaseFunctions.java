@@ -10,6 +10,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
@@ -96,6 +97,17 @@ public class BaseFunctions {
         LOGGER.info("Refreshing the page");
         driver.navigate().refresh();
     }
+
+    public void selectByValue(By locator, String value) {
+        Select dropDown = new Select(driver.findElement(locator));
+        dropDown.selectByValue(value);
+    }
+
+    public void selectByIndex(By locator, Integer index) {
+        Select dropDown = new Select(driver.findElement(locator));
+        dropDown.selectByIndex(index);
+    }
+
 
 
 }
