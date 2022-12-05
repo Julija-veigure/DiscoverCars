@@ -10,8 +10,8 @@ public class DiscoverCarsTest {
 
     BaseFunctions baseFunctions = new BaseFunctions();
     MainPage mainPage = new MainPage(baseFunctions);
-    ResultPage resultPage = new ResultPage(baseFunctions);
     Searching searching = new Searching(baseFunctions);
+    SearchResultPage searchResultPage = new SearchResultPage(baseFunctions, searching);
     Login login = new Login(baseFunctions);
 
     @BeforeEach
@@ -53,7 +53,6 @@ public class DiscoverCarsTest {
         searching.search();
         baseFunctions.pleaseAssert(searching.WARNING_MSG_DROP_OFF, searching.giveWarningMsg());
 
-        //searching.selectDropOffLocation(); //
         searching.tickCheckBox();
 
         searching.selectDropOffDate();
@@ -62,9 +61,14 @@ public class DiscoverCarsTest {
         searching.search();
         searching.loadingAllResults();
 
-        resultPage.checkSpecialOffers();
-        resultPage.changeSearchRequest();
-        resultPage.deletePickUpLocation();
+        searchResultPage.changeSearchRequest();
+        searchResultPage.pickUpLocationChanging();
+        searchResultPage.pickUpTimeChanging();
+        searchResultPage.checkSpecialOffers();
+        searchResultPage.specOfferSelect();
+        searchResultPage.removeAllFilters();
+
+
     }
 
     @Test
@@ -78,7 +82,6 @@ public class DiscoverCarsTest {
         login.typeInEmail();
         login.typeInPassword();
         baseFunctions.pleaseAssert(login.NAME, login.giveAuthorizerName());
-
     }
 
     @Test

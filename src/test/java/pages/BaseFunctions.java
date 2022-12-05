@@ -97,6 +97,10 @@ public class BaseFunctions {
         LOGGER.info("Refreshing the page");
         driver.navigate().refresh();
     }
+    public void loadingAllResults(By locator, By waitingLocator) {
+        driver.findElement(locator).click();
+        pleaseWaitElement(waitingLocator);
+    }
 
     public void selectByValue(By locator, String value) {
         Select dropDown = new Select(driver.findElement(locator));
