@@ -25,7 +25,7 @@ public class DiscoverCarsTest {
     @Test
 
     public void searching() {
-        LOGGER.info("TEST Nr 1: This test will check searching functionality");
+        LOGGER.info("This test will check searching functionality");
 
         baseFunctions.pleaseAssert(mainPage.TITLE_TEXT, mainPage.giveMainPageTitle());
 
@@ -67,13 +67,14 @@ public class DiscoverCarsTest {
         searchResultPage.checkSpecialOffers();
         searchResultPage.specOfferSelect();
         searchResultPage.removeAllFilters();
-
+        searchResultPage.sortBy();
+        searchResultPage.selectCar();
 
     }
 
     @Test
     public void logIn() {
-        LOGGER.info("TEST Nr 2: This test will check login functionality");
+        LOGGER.info("This test will check LOGGED IN PERSON searching functionality");
         login.clickOnLogo();
         login.clickLoginIcon();
         login.closePopUp();
@@ -82,14 +83,15 @@ public class DiscoverCarsTest {
         login.typeInEmail();
         login.typeInPassword();
         baseFunctions.pleaseAssert(login.NAME, login.giveAuthorizerName());
-    }
-
-    @Test
-    public void loginSearching() {
-        LOGGER.info("TEST Nr 3: A logged in person is looking for transport");
-        logIn();
         searching();
     }
+
+//        @Test
+//    public void loginSearching() {
+//        LOGGER.info("A LOGGED IN person is searching for transport:" );
+//        logIn();
+//        searching();
+//    }
 
     @AfterEach
     public void closeBrowser() {

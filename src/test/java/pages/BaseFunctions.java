@@ -79,6 +79,7 @@ public class BaseFunctions {
 
     public List<WebElement> findElements(By locator) {
         //LOGGER.info("Getting all elements by " + locator);
+        LOGGER.info("List size is: " + driver.findElements(locator).size());
         return driver.findElements(locator);
     }
 
