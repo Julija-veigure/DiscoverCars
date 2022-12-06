@@ -13,6 +13,7 @@ public class DiscoverCarsTest {
     Searching searching = new Searching(baseFunctions);
     SearchResultPage searchResultPage = new SearchResultPage(baseFunctions, searching);
     Login login = new Login(baseFunctions);
+    BookNow bookNow = new BookNow(baseFunctions);
 
     @BeforeEach
 
@@ -57,19 +58,31 @@ public class DiscoverCarsTest {
 
         searching.selectDropOffDate();
         searching.selectDropOffTime();
+        // TAKE DATE, MONTH AND TIME, TO COMPARE
 
         searching.search();
         searching.loadingAllResults();
+        // COMPARE DATE, MONTH AND TIME
 
         searchResultPage.changeSearchRequest();
         searchResultPage.pickUpLocationChanging();
         searchResultPage.pickUpTimeChanging();
+        searchResultPage.searchByNewParam();
+        // TAKE DATE, MONTH AND TIME, TO COMPARE
+
         searchResultPage.checkSpecialOffers();
-        searchResultPage.specOfferSelect();
-        searchResultPage.removeAllFilters();
+        //searchResultPage.specOfferSelect();
+        //searchResultPage.removeAllFilters();
+
         searchResultPage.sortBy();
+        // TAKE PRICE TO COMPARE
         searchResultPage.selectCar();
 
+        baseFunctions.switchToNextTab();
+
+        // COMPARE DATE, MONTH AND TIME
+        // COMPARE PRICE
+        bookNow.takeReservation();
     }
 
     @Test
@@ -85,13 +98,6 @@ public class DiscoverCarsTest {
         baseFunctions.pleaseAssert(login.NAME, login.giveAuthorizerName());
         searching();
     }
-
-//        @Test
-//    public void loginSearching() {
-//        LOGGER.info("A LOGGED IN person is searching for transport:" );
-//        logIn();
-//        searching();
-//    }
 
     @AfterEach
     public void closeBrowser() {

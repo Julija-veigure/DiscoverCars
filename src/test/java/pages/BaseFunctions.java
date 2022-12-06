@@ -14,6 +14,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -79,7 +80,7 @@ public class BaseFunctions {
 
     public List<WebElement> findElements(By locator) {
         //LOGGER.info("Getting all elements by " + locator);
-        LOGGER.info("List size is: " + driver.findElements(locator).size());
+        //LOGGER.info("List size is: " + driver.findElements(locator).size());
         return driver.findElements(locator);
     }
 
@@ -98,6 +99,7 @@ public class BaseFunctions {
         LOGGER.info("Refreshing the page");
         driver.navigate().refresh();
     }
+
     public void loadingAllResults(By locator, By waitingLocator) {
         driver.findElement(locator).click();
         pleaseWaitElement(waitingLocator);
@@ -113,6 +115,15 @@ public class BaseFunctions {
         dropDown.selectByIndex(index);
     }
 
+    public void switchToNextTab() {
+            // Store all currently open tabs in tabs
+            ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
+
+            driver.switchTo().window(tabs.get(1));
+//            driver.close();
+//            driver.switchTo().window(tabs.get(0));
+
+    }
 
 
 }

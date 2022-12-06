@@ -16,14 +16,16 @@ public class SearchResultPage {
     private final By CHANGE_SRC_BTN = By.xpath(".//a[@class = 'change-search trigger-gtm-change-search']");
     private final By SPECIAL_OFFERS = By.xpath(".//span[@class = 'category-label trend']");
     private final By SPEC_OFFER_ZERO_DEPOSIT = By.id("filter-special-offers-zero-deposit");
+    private final By ADDITIONAL_FILTERS = By.xpath(".//div[@class = 'flt-opts flt-group opened multiple']");
     private final By REMOVE_ALL_FILTERS = By.xpath(".//a[@class = 'clear-filter btn show']");
     private final String special_offer_text = "Special offers";
     private final By SORTING_BY = By.xpath(".//div[@class = 'dc-ui dropdown inline-block']");
     private final By SORTING_BY_VALUE = By.xpath(".//li[@data-event-label= 'Value']");
     //    private final By CAR_BOX_LIST = By.xpath(".//div[@class = 'car-box filtered']");
     private final By CAR_BOX_LIST = By.xpath(".//div[@class = 'car-box']");
-    //    private final By VIEW_BTN = By.xpath(".//a[@class = 'btn btn-book submit click-on-car selected-car prevent-loading instant']");
-    private final By VIEW_BTN = By.xpath(".//div[@class = 'ca-table-cell top']");
+    private final By VIEW_BTN = By.xpath(".//a[@class = 'btn btn-book submit click-on-car selected-car prevent-loading instant']");
+    //private final By VIEW_BTN = By.xpath(".//div[@class = 'ca-table-cell top']");
+
 
     public SearchResultPage(BaseFunctions baseFunctions, Searching searching) {
         this.baseFunctions = baseFunctions;
@@ -51,13 +53,8 @@ public class SearchResultPage {
     }
 
     public void searchByNewParam() {
-        baseFunctions.loadingAllResults(searching.SEARCH_NOW_BTN, searching.ADDITIONAL_FILTERS);
+        baseFunctions.loadingAllResults(searching.SEARCH_NOW_BTN, SPECIAL_OFFERS);
         LOGGER.info("Searching results after parameters update");
-    }
-
-    public void specOfferSelect() {
-        baseFunctions.click(SPEC_OFFER_ZERO_DEPOSIT);
-        LOGGER.info("Special offers is selected");
     }
 
     public void checkSpecialOffers() {
@@ -65,6 +62,10 @@ public class SearchResultPage {
         baseFunctions.pleaseAssert(special_offer_text, spec_offers_title);
     }
 
+    public void specOfferSelect() {
+        baseFunctions.findElements(ADDITIONAL_FILTERS).get(0).click();
+        LOGGER.info("Special offers is selected");
+    }
 
     public void removeAllFilters() {
         baseFunctions.click(REMOVE_ALL_FILTERS);
@@ -73,19 +74,16 @@ public class SearchResultPage {
 
     public void sortBy() {
         baseFunctions.click(SORTING_BY);
+        baseFunctions.pleaseWaitElement(SORTING_BY_VALUE);
         baseFunctions.findElement(SORTING_BY_VALUE).click();
         LOGGER.info("Sorting is selected by value - Price/rating");
     }
 
     public void selectCar() {
-        baseFunctions.findElements(CAR_BOX_LIST).get(0).findElements(VIEW_BTN).get(0).click();
+        //baseFunctions.findElements(CAR_BOX_LIST).get(0).findElements(VIEW_BTN).get(0).click();
+        baseFunctions.findElements(VIEW_BTN).get(0).click();
         LOGGER.info("Car is selected");
-
     }
-
-//    public void selectCar() {
-//        baseFunctions.findElements(SEARCH_RESULT_LIST).get(0).click();
-//    }
 
 
 }
