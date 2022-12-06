@@ -45,6 +45,7 @@ public class BookNow {
         baseFunctions.click(ADD_DRIVER_COMMENT);
         baseFunctions.typeIn(DRIVER_COMMENT, "This is not a real reservation, this is a TEST");
         baseFunctions.click(BOOK_NOW_BTN);
+        LOGGER.info("Information about driver is filled in and car is booked!");
     }
 
 }

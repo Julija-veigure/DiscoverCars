@@ -99,10 +99,10 @@ public class DiscoverCarsTest {
         searching();
     }
 
-    @AfterEach
-    public void closeBrowser() {
-        baseFunctions.closeBrowser();
-    }
+//    @AfterEach
+//    public void closeBrowser() {
+//        baseFunctions.closeBrowser();
+//    }
 
 }
 

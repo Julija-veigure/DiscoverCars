@@ -122,6 +122,7 @@ public class BaseFunctions {
             driver.switchTo().window(tabs.get(1));
 //            driver.close();
 //            driver.switchTo().window(tabs.get(0));
+        LOGGER.info("We switched to the next tab");
 
     }
 
